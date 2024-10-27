@@ -28,3 +28,10 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+"""
+git add .
+git commit -m "Updated requirements.txt with cleaned package names and versions"
+git push -u origin main
+"""
