@@ -20,7 +20,7 @@ def home():
     return render_template("index.html")
 
 @app.route('/Project1', methods=["GET","POST"])
-def home():
+def Project1():
     result = ""
     if request.method == "POST":
         text = request.form["text"].lower()
