@@ -1,6 +1,12 @@
 // Define your projects here
 const projects = [
     {
+        name: "AL wire Rod Predictor",
+        links: [
+            { label: "Version 1.0", url: "https://sunmoonhaze.onrender.com/Project2" }
+        ]
+    },
+    {
         name: "Treasure Island Game",
         links: [
             { label: "Version 1.0", url: "https://suraj8300.github.io/Treasure-Island-Game-1.0/" },
