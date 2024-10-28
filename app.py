@@ -3,8 +3,6 @@ import pickle
 import numpy as np
 
 
-app = Flask(__name__)
-
 #############################################################################################
 # Cypher Encoder Decoder
 
@@ -22,20 +20,11 @@ def caesar(original_text, shift_amount, choice):
     return cypher_text
 
 #######################################################################################################
-
 # AL wire Rod Predictor
-
-from flask import Flask, render_template, request, send_from_directory
-import pickle
-import numpy as np
-
-
-
 
 # Define the relative path to your pickle file
 # PICKLE_FILE_PATH = "projectFiles/project2/data/Al_wire_rod.sav"  # Update with your project name
 PICKLE_FILE_PATH = "notebooks/project2/Al_wire_rod.sav"
-
 
 def load_model():
     # Load the machine learning model
@@ -44,6 +33,8 @@ def load_model():
     return model
 
 #####################################################################################################
+
+app = Flask(__name__)
 
 @app.route('/')
 def home():
