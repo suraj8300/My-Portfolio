@@ -14,6 +14,12 @@ const projects = [
         ]
     },
     {
+        name: "Cipher Encoder Decoder",
+        links: [
+            { label: "Version 1.0", url: "https://suraj8300.github.io/Tic-Tac-Toe-Game/" }
+        ]
+    },
+    {
         name: "Project Under Progress",
         links: [
             { label: "Not released yet!", url: "https://suraj8300.github.io/My-Portfolio/" },
