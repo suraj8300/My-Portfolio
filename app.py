@@ -81,6 +81,7 @@ def predict():
 
     # Return the HTML response
     
+    
     return render_template('index2_1.html', uts=uts, elongation=elongation, conductivity=conductivity)
 
 if __name__ == '__main__':
