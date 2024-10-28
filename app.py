@@ -40,7 +40,7 @@ def Project1():
         choice = request.form["choice"]
         print(f"Received: text={text}, shift={shift}, choice={choice}")
         result = caesar(text, shift, choice)
-    
+    return render_template("project1/index1.html", result=result)
 
 @app.route('/Project2')
 def Project2():
