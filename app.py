@@ -116,7 +116,7 @@ def predict():
                 <div class="result">UTS (MPa): {uts:.2f}</div>
                 <div class="result">Elongation (%): {elongation:.2f}</div>
                 <div class="result">Conductivity (% IACS): {conductivity:.2f}</div>
-                <form action="/" method="get">
+                <form action="/Project2" method="get">
                     <button class="button" type="submit">Predict for Next Rod</button>
                 </form>
             </div>
