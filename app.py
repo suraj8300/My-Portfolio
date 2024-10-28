@@ -1,6 +1,10 @@
+###########################################################################################################
+# All imports here
+
 from flask import Flask, render_template, request, send_from_directory
 import pickle
 import numpy as np
+import pandas as pd
 
 
 #############################################################################################
@@ -36,12 +40,16 @@ def load_model():
 model = load_model()
 
 #####################################################################################################
+# Flask Application
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template("index.html")
+
+#######################################################################################################
+# Project 1 : Cypher encode decoder
 
 @app.route('/Project1', methods=["GET","POST"])
 def Project1():
@@ -54,6 +62,9 @@ def Project1():
         result = caesar(text, shift, choice)
     return render_template("index1.html", result=result)
 
+#######################################################################################################
+# Project 2 : AL wire rod predictor
+
 @app.route('/Project2')
 def Project2():
 
@@ -64,21 +75,26 @@ def Project2():
 @app.route('/predict', methods=['POST'])
 def predict():
     
-    # You can now use the model for predictions or other tasks
-    
     # Get form data
     casting_temp = float(request.form['casting_temp'])
     rolling_speed = float(request.form['rolling_speed'])
     cooling_rate = float(request.form['cooling_rate'])
 
     # Prepare data for prediction
-    input_data = np.array([[casting_temp, rolling_speed, cooling_rate]])
-    
+    input_data = [[casting_temp, rolling_speed, cooling_rate]]
+    input_df = pd.DataFrame(input_data, columns=["Casting_Temperature_C", "Rolling_Speed_m_min", "Cooling_Rate_C_s"])
+
     # Predict using the model
-    prediction = model.predict(input_data)[0]
-    uts = prediction[0]
-    elongation = prediction[1]
-    conductivity = prediction[2]
+    prediction = model.predict(input_df) # Use the DataFrame with column names for prediction
+    
+    # Unpack the predictions if they are separate values in a multi-output model
+    if len(prediction[0]) == 3:
+        uts, elongation, conductivity = prediction[0]
+    else:
+        # Handle the case where the model returns a single prediction array
+        uts = prediction[0][0]
+        elongation = prediction[0][1] if len(prediction[0]) > 1 else None
+        conductivity = prediction[0][2] if len(prediction[0]) > 2 else None
 
     # Manually build the response HTML to show the predictions
     result_html = f"""
@@ -136,9 +152,14 @@ def predict():
     # Return the HTML response
     return result_html
 
+#######################################################################################################
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
+#########################################################################################################
+# Git push commands
 
 """
 git add .
