@@ -15,7 +15,11 @@ def caesar(original_text, shift_amount, choice):
                 cypher_text += alphabet[(alphabet.index(i) - shift_amount) % 26]
     return cypher_text
 
-@app.route('/', methods=["GET","POST"])
+@app.route('/')
+def home():
+    return render_template("index.html")
+
+@app.route('/Project1', methods=["GET","POST"])
 def home():
     result = ""
     if request.method == "POST":
@@ -24,7 +28,7 @@ def home():
         choice = request.form["choice"]
         print(f"Received: text={text}, shift={shift}, choice={choice}")
         result = caesar(text, shift, choice)
-    return render_template("index.html", result=result)
+    return render_template("index1.html", result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)

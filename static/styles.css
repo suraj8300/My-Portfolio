@@ -1,78 +1,148 @@
-/* Basic Reset */
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #f0f8ff, #e0e0e0);
+    background: linear-gradient(135deg, #f06, #f79);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header Styles */
-h1 {
-    color: #2c3e50;
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.8);
     margin-bottom: 20px;
 }
 
-/* Form Styles */
-form {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.8);
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ff5722;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+#projects {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#projects h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-item {
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Input Styles */
-input[type="text"],
-input[type="number"],
-select,
-button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #bdc3c7;
-    transition: border-color 0.3s;
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Input Focus Styles */
-input:focus,
-select:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-/* Button Styles */
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
+.project-name {
+    font-size: 1.5em;
+    color: #ff5722;
     cursor: pointer;
-    font-size: 16px;
+    margin-bottom: 10px;
+    position: relative;
 }
 
-button:hover {
-    background-color: #2980b9;
+.project-name::after {
+    content: '👉';
+    position: absolute;
+    right: -30px;
+    transition: transform 0.3s;
 }
 
-/* Result Styles */
-h2 {
-    margin-top: 20px;
-    color: #27ae60;
+.project-name:hover::after {
+    transform: translateX(10px);
 }
 
-p {
-    font-size: 18px;
-    color: #34495e;
-    background-color: #ecf0f1;
-    padding: 10px;
-    border-radius: 5px;
+.project-links a {
     display: inline-block;
+    margin-right: 10px;
+    padding: 8px 15px;
+    background: #ff5722;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.project-links a:hover {
+    background: #e64a19;
+}
+
+footer {
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer h2 {
+    margin-bottom: 15px;
+    color: #ff5722;
+}
+
+footer p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+footer a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    #projects h2 {
+        font-size: 1.5em;
+    }
+
+    .project-name {
+        font-size: 1.2em;
+    }
+
+    .project-links a {
+        padding: 6px 12px;
+        margin-bottom: 5px;
+    }
 }

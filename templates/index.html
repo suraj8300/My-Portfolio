@@ -3,30 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Caesar Cipher</title>
+    <title>Dynamic Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Caesar Cipher Encryptor/Decryptor</h1>
-    <form method="POST">
-        <label for="text">Enter text:</label>
-        <input type="text" id="text" name="text" required><br><br>
-        
-        <label for="shift">Enter shift number:</label>
-        <input type="number" id="shift" name="shift" required><br><br>
-        
-        <label for="choice">Choose operation:</label>
-        <select id="choice" name="choice">
-            <option value="encrypt">Encrypt</option>
-            <option value="decrypt">Decrypt</option>
-        </select><br><br>
-        
-        <button type="submit">Submit</button>
-    </form>
-    
-    {% if result %}
-    <h2>Result:</h2>
-    <p>{{ result }}</p>
-    {% endif %}
+    <header>
+        <h1>Welcome to My Portfolio!</h1>
+        <p>Explore my projects and feel free to reach out.</p>
+    </header>
+
+    <main>
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div id="project-list">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h2>Contact Me</h2>
+        <p>Email: <a href="surajdhere0000@gmail.com">owner@example.com</a></p>
+        <p>Phone: +1 (234) 567-8901</p>
+        <p>Follow me on 
+            <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>, 
+            <a href="https://github.com/suraj8300" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
