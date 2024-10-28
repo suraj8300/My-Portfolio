@@ -16,7 +16,7 @@ const projects = [
     {
         name: "Cypher Encoder Decoder",
         links: [
-            { label: "Version 1.0", url: "https://cypher-game.onrender.com/Project1" }
+            { label: "Version 1.0", url: "https://sunmoonhaze.onrender.com/Project1" }
         ]
     },
     {
