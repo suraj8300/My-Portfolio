@@ -4,9 +4,15 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load the machine learning model
-model = pickle.load(open(r"A:\MyWork\Learning\MachineLearningStuff\sunmoonhaze\ALwirerodpredictor\Al_wire_rod.sav", 'rb'))
 
+# Define the relative path to your pickle file
+PICKLE_FILE_PATH = "projectFiles/project2/data/Al_wire_rod.sav"  # Update with your project name
+
+def load_model():
+    # Load the machine learning model
+    with open(PICKLE_FILE_PATH, 'rb') as f:
+        model = pickle.load(f)
+    return model
 
 def caesar(original_text, shift_amount, choice):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -34,15 +40,22 @@ def Project1():
         choice = request.form["choice"]
         print(f"Received: text={text}, shift={shift}, choice={choice}")
         result = caesar(text, shift, choice)
-    return render_template("index1.html", result=result)
+    
 
 @app.route('/Project2')
 def Project2():
+    # Load the model when needed
+    model = load_model()
+    # You can now use the model for predictions or other tasks
     # Serve the index2.html file from the static folder
-    return send_from_directory('static', 'index2.html')
+    return send_from_directory("templates/project2/", "index2.html")
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    # Load the model when needed
+    model = load_model()
+    # You can now use the model for predictions or other tasks
+    
     # Get form data
     casting_temp = float(request.form['casting_temp'])
     rolling_speed = float(request.form['rolling_speed'])
