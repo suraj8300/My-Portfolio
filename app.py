@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 
 # Define the relative path to your pickle file
-PICKLE_FILE_PATH = "projectFiles/project2/data/Al_wire_rod.sav"  # Update with your project name
+# PICKLE_FILE_PATH = "projectFiles/project2/data/Al_wire_rod.sav"  # Update with your project name
+PICKLE_FILE_PATH = "notebooks/project2/Al_wire_rod.sav"
 
 def load_model():
     # Load the machine learning model
