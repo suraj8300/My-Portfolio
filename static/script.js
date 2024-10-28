@@ -16,7 +16,7 @@ const projects = [
     {
         name: "Cipher Encoder Decoder",
         links: [
-            { label: "Version 1.0", url: "https://suraj8300.github.io/Tic-Tac-Toe-Game/" }
+            { label: "Version 1.0", url: "https://cypher-game.onrender.com/Project1" }
         ]
     },
     {
