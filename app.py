@@ -36,6 +36,6 @@ if __name__ == '__main__':
 
 """
 git add .
-git commit -m "Security Updates"
+git commit -m "Updated requirements.txt with cleaned package names and versions"
 git push -u origin main
 """
