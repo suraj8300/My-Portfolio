@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluminium Wire Rod Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .next-predict {
+            margin-top: 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .next-predict:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Predict UTS, Elongation, and Conductivity</h2>
+        <form action="/predict" method="post">
+            <label for="casting_temp">Casting Temperature (C):</label><br>
+            <input type="text" id="casting_temp" name="casting_temp" required><br>
+
+            <label for="rolling_speed">Rolling Speed (m/min):</label><br>
+            <input type="text" id="rolling_speed" name="rolling_speed" required><br>
+
+            <label for="cooling_rate">Cooling Rate (C/s):</label><br>
+            <input type="text" id="cooling_rate" name="cooling_rate" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        <div class="prediction" id="prediction-result" style="display: none;">
+            <!-- Prediction result will be displayed here -->
+        </div>
+
+        <!-- Button to predict for the next rod -->
+        <button class="next-predict" onclick="window.location.href='/'">Predict for Next Rod</button>
+    </div>
+
+</body>
+</html>

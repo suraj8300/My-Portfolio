@@ -1,6 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
+import pickle
+import numpy as np
 
 app = Flask(__name__)
+
+# Load the machine learning model
+model = pickle.load(open(r"A:\MyWork\Learning\MachineLearningStuff\sunmoonhaze\ALwirerodpredictor\Al_wire_rod.sav", 'rb'))
+
 
 def caesar(original_text, shift_amount, choice):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -29,6 +35,83 @@ def Project1():
         print(f"Received: text={text}, shift={shift}, choice={choice}")
         result = caesar(text, shift, choice)
     return render_template("index1.html", result=result)
+
+@app.route('/Project2')
+def Project2():
+    # Serve the index2.html file from the static folder
+    return send_from_directory('static', 'index2.html')
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    # Get form data
+    casting_temp = float(request.form['casting_temp'])
+    rolling_speed = float(request.form['rolling_speed'])
+    cooling_rate = float(request.form['cooling_rate'])
+
+    # Prepare data for prediction
+    input_data = np.array([[casting_temp, rolling_speed, cooling_rate]])
+    
+    # Predict using the model
+    prediction = model.predict(input_data)[0]
+    uts = prediction[0]
+    elongation = prediction[1]
+    conductivity = prediction[2]
+
+    # Manually build the response HTML to show the predictions
+    result_html = f"""
+    <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    background-color: #f5f5f5;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    margin: 0;
+                }}
+                .container {{
+                    background-color: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                }}
+                .result {{
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                }}
+                .button {{
+                    padding: 10px 20px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                }}
+                .button:hover {{
+                    background-color: #45a049;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h2>Prediction Results</h2>
+                <div class="result">UTS (MPa): {uts:.2f}</div>
+                <div class="result">Elongation (%): {elongation:.2f}</div>
+                <div class="result">Conductivity (% IACS): {conductivity:.2f}</div>
+                <form action="/" method="get">
+                    <button class="button" type="submit">Predict for Next Rod</button>
+                </form>
+            </div>
+        </body>
+    </html>
+    """
+
+    # Return the HTML response
+    return result_html
 
 if __name__ == '__main__':
     app.run(debug=True)
