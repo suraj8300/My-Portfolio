@@ -3,8 +3,8 @@
 from flask import Flask, render_template, request, send_from_directory
 import pickle
 import numpy as np
-import Project1
-import Project2
+
+import project_2
 
 
 # Define the relative path to your pickle file
