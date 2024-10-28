@@ -14,7 +14,7 @@ const projects = [
         ]
     },
     {
-        name: "Cipher Encoder Decoder",
+        name: "Cypher Encoder Decoder",
         links: [
             { label: "Version 1.0", url: "https://cypher-game.onrender.com/Project1" }
         ]
