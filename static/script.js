@@ -7,6 +7,12 @@ const projects = [
         ]
     },
     {
+        name: "Cypher Encoder Decoder",
+        links: [
+            { label: "Version 1.0", url: "https://sunmoonhaze.onrender.com/Project1" }
+        ]
+    },
+    {
         name: "Treasure Island Game",
         links: [
             { label: "Version 1.0", url: "https://suraj8300.github.io/Treasure-Island-Game-1.0/" },
@@ -17,12 +23,6 @@ const projects = [
         name: "Tic Tac Toe Game",
         links: [
             { label: "Version 1.0", url: "https://suraj8300.github.io/Tic-Tac-Toe-Game/" }
-        ]
-    },
-    {
-        name: "Cypher Encoder Decoder",
-        links: [
-            { label: "Version 1.0", url: "https://sunmoonhaze.onrender.com/Project1" }
         ]
     },
     {
