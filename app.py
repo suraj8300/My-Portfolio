@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 
+
 #############################################################################################
 # Cypher Encoder Decoder
 
@@ -47,6 +48,9 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template("index.html")
+
+#################################################################################################
+
 
 #######################################################################################################
 # Project 1 : Cypher encode decoder
@@ -166,3 +170,4 @@ git add .
 git commit -m "Updated requirements.txt with cleaned package names and versions"
 git push -u origin main
 """
+
